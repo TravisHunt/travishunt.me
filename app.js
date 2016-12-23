@@ -46,13 +46,16 @@ app.use(function(err, req, res, next) {
   var env = req.app.get('env');
   res.locals.message = err.message;
   res.locals.error = env === 'development' ? err : {};
-
-  // render the error page
+  
   res.status(err.status || 500);
-  if (env === 'development') {
-    res.render('error');
-  } else {
-    res.send();
+
+  // render custom error pages
+  switch (err.status) {
+    case 404:
+      res.render('404');
+      break;
+    default:
+      res.render('error');
   }
   
 });

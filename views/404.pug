@@ -1,0 +1,22 @@
+extends layout
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/404.css")
+
+block content
+  .code-area
+    span.code-comment // 404 page not found.
+    span
+      span.code-conditional if
+      | (
+      span.code-operator !
+      span.code-variable found
+      | ) {
+      span.code-line
+        span.code-keyword
+          i.code-indent
+          | throw
+        span (
+          span.code-string "(╯°□°)╯︵ ┻━┻"
+          | );
+        span.code-closing }
