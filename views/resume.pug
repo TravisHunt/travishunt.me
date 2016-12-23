@@ -1,0 +1,85 @@
+extends layout
+
+block content
+  // Page Container
+  .w3-content.w3-margin-top.page-container
+    // Grid
+    .w3-row-padding
+      // Left Column
+      .w3-third
+        .w3-white.w3-text-grey.w3-card-4
+          .w3-display-container
+            img(src="/images/derp.jpg" style="width: 100%;" alt="Avatar")
+            .w3-display-bottomleft.w3-container.w3-text-black
+              h2= name
+          .w3-container
+            p
+              i.fa.fa-briefcase.fa-fw.w3-margin-right.w3-large.w3-text-teal
+              | Software Developer
+            p
+              i.fa.fa-home.fa-fw.w3-margin-right.w3-large.w3-text-teal
+              | Savage, MD
+            p
+              i.fa.fa-envelope.fa-fw.w3-margin-right.w3-large.w3-text-teal
+              | travis@travishunt.me
+            p
+              i.fa.fa-phone.fa-fw.w3-margin-right.w3-large.w3-text-teal
+              | (240) 315-5315
+
+            hr
+
+            p.w3-large: b
+              i.fa.fa-asterisk.fa-fw.w3-margin-right.w3-text-teal
+              | Skills
+
+            each percentage, skill in skills
+              p= skill
+              .w3-progress-container.w3-round-xlarge.w3-small
+                div(style={width: percentage}).w3-progressbar.w3-round-xlarge.w3-teal
+                  .w3-center.w3-text-white= percentage
+            br
+      // End Left Column
+      // Right Column
+      .w3-twothird
+        .w3-container.w3-card-2.w3-white.w3-margin-bottom
+          h2.w3-text-grey.w3-padding-16
+            i.fa.fa-suitcase.fa-fw.w3-margin-right.w3-xxlarge.w3-text-teal
+            | Work Experience
+
+          each job in jobs
+            .w3-container
+              h5.w3-opacity: b #{job.position} / #{job.company}
+              h6.w3-text-teal
+                i.fa.fa-calendar.fa-fw.w3-margin-right
+                if job.current
+                  | #{job.start} - #[span.w3-tag.w3-teal.w3-round Current]
+                else
+                  | #{job.start} - #{job.end}
+              p= job.description
+
+        .w3-container.w3-card-2.w3-white
+          h2.w3-text-grey.w3-padding-16
+            i.fa.fa-certificate.fa-fw.w3-margin-right.w3-xxlarge.w3-text-teal
+            | Education
+
+          each edu in education
+            .w3-container
+              h5.w3-opacity: b= edu.university
+              h6.w3-text-teal
+                i.fa.fa-calendar.fa-fw.w3-margin-right
+                if edu.current
+                  | #{edu.start} - #[span.w3-tag.w3-teal.w3-round Current]
+                else
+                  | #{edu.start} - #{edu.end}
+              p #{edu.degree} #{edu.major}
+
+      // End Right Column
+    // End Grid
+  // End Page Container
+  footer.w3-container.w3-teal.w3-center.w3-margin-top
+    p Find me over here!
+    | #[i.fa.fa-github.w3-hover-text-purple.w3-large]
+    | #[i.fa.fa-linkedin.w3-hover-text-indigo.w3-large]
+    | #[i.fa.fa-twitter.w3-hover-text-light-blue.w3-large]
+    p
+      | Powered by #[a(href="http://www.w3schools.com/w3css/default.asp" target="_blank") w3.css]
